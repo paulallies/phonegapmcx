@@ -10,4 +10,5 @@ function list(data){
 	});
 	output += '</ul>';
 	$("#emaillist").html(output).trigger('create');
+	$.mobile.hidePageLoadingMsg();
 }
