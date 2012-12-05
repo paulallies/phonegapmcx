@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">	
+	<head>
+		<meta charset="utf-8" />
+		<title>MCX Mobile</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile.css" />
+		<link rel="stylesheet" type="text/css" href="css/app.css" />
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/jquery.mobile.js"></script>
+
+	</head>
+	<body>
+		
+		<div id="inbox" data-role="page" data-title="Home">
+			<div data-role="header">
+				<h1>INBOX</h1>
+				<a data-role="button" href="#compose" data-transition="slideup"  class="ui-btn-right">Compose</a>
+			</div>
+			<ul data-role="listview" id="emaillist">
+
+			</ul>
+		</div>
+
+
+		<div id="compose" data-role="page" data-title="Compose">
+			<div data-role="header">
+				<h1>New Message</h1>		
+				<a data-role="button" href="#inbox" data-transition="slidedown"  >Cancel</a>
+				<a data-role="button" href="#inbox" data-transition="slidedown" >Send</a>
+			</div>
+		</div>
+		
+		<script type="text/javascript" src="js/app.js"></script>
+		<script type="text/javascript">
+			 $(document).ready(function() {
+			   	//make ajax call for email.
+			   	$.ajax({
+			         url: "http://nodeimap.apphb.com/",
+			         success: function(data) { list(data); }
+			      });
+			 });
+		</script>
+
+		
+		
+	</body>
+</html>
