@@ -11,11 +11,14 @@
 		<script type="text/javascript" src="js/app.js"></script>
 		<script type="text/javascript">
 			 $(document).ready(function() {
-			   	//make ajax call for email.
-			   	$.ajax({
-			         url: "http://nodeimap.apphb.com/",
-			         success: function(data) { list(data); }
-			      });
+			$.mobile.initializePage();
+			   	 $.ajax({
+			          url: "http://nodeimap.apphb.com/",
+			          success: function(data) { list(data); }
+			       });
+ 		
+
+
 			 });
 		</script>
 
@@ -27,7 +30,8 @@
 				<h1>INBOX</h1>
 				<a data-role="button" href="#compose" data-transition="slideup"  class="ui-btn-right">Compose</a>
 			</div>
-			<div id="emaillist"></div>
+			<div  id="emaillist">
+			</div>
 		</div>
 
 
@@ -37,6 +41,11 @@
 				<a data-role="button" href="#inbox" data-transition="slidedown"  >Cancel</a>
 				<a data-role="button" href="#inbox" data-transition="slidedown" >Send</a>
 			</div>
-		</div>		
+		</div>
+
+		
+
+		
+		
 	</body>
 </html>
