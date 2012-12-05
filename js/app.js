@@ -1,5 +1,6 @@
 function list(data){
-	var output = '';
+	$("#emaillist").empty();
+	var output = '<ul data-role="listview">';
 	$.each(data, function(key, value){
 		output += '<li><a href="#msg">';
 		output += '<h2>' + value.headers.from[0] + '</h2>';
@@ -7,5 +8,6 @@ function list(data){
 		output += '<p class="ui-li-aside">' + value.date + '</p>';
 		output += '</a></li>';
 	});
-	$("#emaillist").append(output);
+	output += '</ul>';
+	$("#emaillist").html(output).trigger('create');
 }
