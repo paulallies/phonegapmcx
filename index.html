@@ -24,14 +24,29 @@
 
 	</head>
 	<body>
+
+
 		
 		<div id="inbox" data-role="page" data-title="Home">
 			<div data-role="header" data-position="fixed">
 				<h1>INBOX</h1>
-				<a data-role="button" href="#compose" data-transition="slideup"  class="ui-btn-right">Compose</a>
+				<a data-role="button" href="#folders" data-transition="slide" data-direction="reverse">Folders</a>
 			</div>
 			<div  id="emaillist">
 			</div>
+			<div data-role="footer" data-position="fixed" class="ui-bar">
+				<a href="#compose" data-transition="slideup" data-role="button">Compose</a>
+			</div>
+		</div>
+
+
+		<div id="folders" data-role="page" data-title="Folders">
+			<div data-role="header" data-position="fixed">
+				<h1>Folders</h1>
+			</div>	
+			<ul data-role="listview">
+				<li><a href="#inbox" data-transition="slide">Inbox</a></li>
+			</ul>		
 		</div>
 
 
