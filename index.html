@@ -14,12 +14,15 @@
 			 $(document).ready(function() {
 			$.mobile.showPageLoadingMsg("a", "Loading...");
 			   	 $.ajax({
-			          url: "http://nodeimap.apphb.com/",
+			   	 		type: "GET",
+			          //url: "http://nodeimap.apphb.com/",
+			          url: "http://dig-pallies/Mweb.Assets.Email.WebService/email.svc/folders/emails?folderPath=inbox&pagenumber=1&pagesize=10",
+			          headers: {
+			          	username: "migrate2-3@mweb.co.za",
+			          	password: "passwor1"
+			          },
 			          success: function(data) { list(data); }
 			       });
- 		
-
-
 			 });
 		</script>
 
@@ -62,7 +65,7 @@
 		<div id="msg" data-role="page" data-title="Message">
 			<div data-role="header">
 				<h1>Message</h1>		
-				<a data-role="button" href="#inbox" data-transition="slidedown"  >Inbox</a>
+				<a data-role="button" href="#inbox" data-transition="slide"  data-direction="reverse" >Inbox</a>
 			</div>
 
 		</div>
