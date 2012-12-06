@@ -14,13 +14,7 @@
 			 $(document).ready(function() {
 			$.mobile.showPageLoadingMsg("a", "Loading...");
 			   	 $.ajax({
-			   	 		type: "GET",
-			          //url: "http://nodeimap.apphb.com/",
-			          url: "http://mwvalphadev01.mweb.co.za/Mweb.Assets.Email.WebService/email.svc/folders/emails?folderPath=inbox&pagenumber=1&pagesize=10",
-			          headers: {
-			          	username: "migrate2-3@mweb.co.za",
-			          	password: "passwor1"
-			          },
+			          url: "http://nodeimap.apphb.com/count/10",
 			          success: function(data) { list(data); }
 			       });
 			 });
