@@ -1,7 +1,6 @@
 function list(data){
 	$("#emaillist").empty();
 	var output = '<ul data-role="listview">';
-	console.log(data);
 	 $.each(data, function(key, value){
 	 	output += '<li><a href="#msg" data-transition="slide" onclick="showEmail('+value.uid+')">';
 	 	output += '<h2>' + value.headers.from[0] + '</h2>';
@@ -15,7 +14,7 @@ function list(data){
 }
 
 function showEmail(id){
-	$.getJson("http://nodeimap.apphb.com/msg/"+id, function(data){
+	$.getJSON("http://nodeimap.apphb.com/msg/"+id, function(data){
 		console.log(data);
 	})
 }
