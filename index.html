@@ -15,7 +15,6 @@
 
 				$.mobile.showPageLoadingMsg("a", "Loading...");
 			   	$.ajax({
-			   		timeout: 8000,
 			   		error: function(){alert("some error occured")},
 			        url: "http://nodeimap.apphb.com/count/10",
 			        success: function(data) { list(data); }
