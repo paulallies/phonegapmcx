@@ -14,8 +14,9 @@ function list(data){
 }
 
 function showEmail(id){
+	$("#emailContent").html("");
 	$.getJSON("http://nodeimap.apphb.com/msg/"+id, function(data){
-		console.log(data);
+		$("#emailContent").html(data.headers.received);
 	})
 }
 
