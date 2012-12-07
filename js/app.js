@@ -21,8 +21,10 @@ function showEmail(uid){
 	$("#msg .subject").html(subject);
 	$("#msg .date").html(date);
 	$("#body").html("Loading...");
-	$.getJSON("http://nodeimap.apphb.com/msg/"+uid, function(data){
-		$("#body").html(data.headers.received);
-	})
+	$.ajax({
+	 	error: function(){alert("some error occured")},
+	     url: "http://nodeimap.apphb.com/msg/"+uid,
+	     success: function(data) { $("#body").html(data); }
+	 });
 }
 
