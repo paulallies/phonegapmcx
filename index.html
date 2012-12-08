@@ -11,18 +11,10 @@
 		<script type="text/javascript" src="js/phonegap-1.0.0.js"></script>
 		<script type="text/javascript" src="js/app.js"></script>
 		<script type="text/javascript">
-			 $(document).ready(function() {
-
-				$.mobile.showPageLoadingMsg("a", "Loading...");
-			   	$.ajax({
-			   		error: function(){alert("some error occured")},
-			        url: "http://nodeimap.apphb.com/count/10",
-			        success: function(data) { list(data); }
-			    });
-			 });
-
+			$(document).ready(function(){
+				$.mobile.allowCrossDomainPages = true;
+			});
 		</script>
-
 	</head>
 	<body>
 
@@ -32,8 +24,10 @@
 			<div data-role="header" data-position="fixed">
 				<h1>INBOX</h1>
 				<a data-role="button" href="#folders" data-transition="slide" data-direction="reverse">Folders</a>
+				<a data-role="button" href="#" onclick="getEmailHeaders(0)">Get Emails</a>
 			</div>
 			<div data-role="content"  id="emaillist">
+				<p>Press the "Get Emails" Button</p>
 			</div>
 			<div data-role="footer" data-position="fixed" class="ui-bar">
 				<a href="#compose" data-transition="slideup" data-role="button">Compose</a>
@@ -50,19 +44,71 @@
 			</ul>		
 		</div>
 
-
 		<div id="compose" data-role="page" data-title="Compose">
-			<div data-role="header">
+			<div data-role="header" data-position="fixed">
 				<h1>New Message</h1>		
 				<a data-role="button" href="#inbox" data-transition="slidedown"  >Cancel</a>
 				<a data-role="button" href="#inbox" data-transition="slidedown" >Send</a>
 			</div>
+			<div data-role="content">
+				<ul data-role="listview">
+					<li>
+   						<label for="to">To:</label>
+   						<input type="text" name="email" id="email" value=""  />
+					</li>
+					<li>
+						    <label for="name">Subject:</label>
+						    <input type="text" name="subject" id="subject" value=""  />
+					</li>
+				</ul>
+			</div>
+			<div data-role="content">
+				<label for="textarea-a">Message:</label>
+				<textarea name="textarea" id="textarea-a">
+					&nbsp;
+				</textarea>
+			</div>
+		</div>
+
+		<div id="reply" data-role="page" data-title="Reply">
+			<div data-role="header" data-position="fixed">
+				<h1>Re:</h1>		
+				<a data-role="button" href="#msg" data-transition="slidedown"  >Cancel</a>
+				<a data-role="button" href="#msg" data-transition="slidedown" >Send</a>
+			</div>
+			<div data-role="content">
+				<ul data-role="listview">
+					<li>
+   						<label for="to">To:</label>
+   						<input type="text" name="email" id="email" value=""  />
+					</li>
+					<li>
+						    <label for="name">Subject:</label>
+						    <input type="text" name="subject" id="subject" value=""  />
+					</li>
+				</ul>
+			</div>
+			<div data-role="content">
+				<label for="textarea-a">Message:</label>
+				<textarea name="textarea" id="textarea-a">
+					&nbsp;
+				</textarea>
+			</div>
+		</div>
+
+		<div data-role="dialog" id="popupPanel">
+
+    		<a data-theme="a" href="#reply" data-role="button">Reply</a>
+    		<a data-theme="a" href="#reply" data-role="button">Forward</a>
+    		<a data-theme="a" href="#msg" data-role="button">Print</a>
+	 
 		</div>
 
 		<div id="msg" data-role="page" data-title="Message">
-			<div data-role="header">
+			<div data-role="header" data-position="fixed">
 				<h1>Message</h1>		
 				<a data-role="button" href="#inbox" data-transition="slide"  data-direction="reverse" >Inbox</a>
+				<a href="#popupPanel" data-rel="dialog" data-role="button">Action</a>
 			</div>
 			<div data-role="content" id="emailContent">
 				<ul data-role="listview">
@@ -79,15 +125,17 @@
 						<label for="basic">Date: </label><label style="font-weight:normal" class="date"></label>
 						
 					</li>
-					<li>		
-						<div data-role="content" id="body">
+					
+						<div id="body">
 
 						</div>
-					</li>
+			
 				</ul>
 				
 			</div>
 		</div>
+
+	
 
 		
 

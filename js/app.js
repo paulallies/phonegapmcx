@@ -13,6 +13,27 @@ function list(data){
 	$.mobile.hidePageLoadingMsg();
 }
 
+function getEmailHeaders(c){
+	c += 1;
+	$.mobile.showPageLoadingMsg("a", "Loading...");
+	$.ajax({
+		error: function(){
+			if(c === 3){
+				alert("data not available at this time");
+				$.mobile.hidePageLoadingMsg();
+			}
+			else{
+				console.log(c);
+				getEmailHeaders(c);
+			}
+		},
+	    url: "http://nodeimap.apphb.com/count/10",
+	    success: function(data) { 
+	    	list(data); 
+	    }
+	});
+}
+
 function showEmail(uid){
 	var from  = $("li[uid="+uid+"] h2.from").html();
 	var subject  = $("li[uid="+uid+"] p.subject").html();
@@ -20,11 +41,11 @@ function showEmail(uid){
 	$("#msg .from").html(from);
 	$("#msg .subject").html(subject);
 	$("#msg .date").html(date);
-	$("#body").html("Loading...");
-	$.ajax({
-	 	error: function(){alert("some error occured")},
-	     url: "http://nodeimap.apphb.com/msg/"+uid,
-	     success: function(data) { $("#body").html(data); }
-	 });
+	 $("#body").html('<iframe src="http://nodeimap.apphb.com/msg/'+uid+'" style="width:100%;height:1000px; border:0"></iframe>​​​​​​​​​​');
+	// $.ajax({
+	//  	error: function(){alert("some error occured")},
+	//      url: "http://nodeimap.apphb.com/msg/"+uid,
+	//      success: function(data) { $("#body").html(data); }
+	//  });
 }
 
