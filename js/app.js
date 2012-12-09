@@ -41,11 +41,12 @@ function showEmail(uid){
 	$("#msg .from").html(from);
 	$("#msg .subject").html(subject);
 	$("#msg .date").html(date);
-	 $("#body").html('<iframe src="http://nodeimap.apphb.com/msg/'+uid+'" style="width:100%;height:1000px; border:0"></iframe>​​​​​​​​​​');
-	// $.ajax({
-	//  	error: function(){alert("some error occured")},
-	//      url: "http://nodeimap.apphb.com/msg/"+uid,
-	//      success: function(data) { $("#body").html(data); }
-	//  });
+	// $("#body").html('<iframe src="http://nodeimap.apphb.com/msg/'+uid+'" style="width:100%;height:1000px; border:0"></iframe>​​​​​​​​​​');
+	 $("#body").html('Loading...');
+	 $.ajax({
+	  	error: function(){alert("some error occured")},
+	      url: "http://nodeimap.apphb.com/msg/"+uid,
+	      success: function(data) { $("#body").html(data); }
+	  });
 }
 
